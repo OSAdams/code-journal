@@ -3,7 +3,7 @@ header {
   height: 53px;
 }
 
-.header-text h1 {
+h1.header-text {
   margin: 0;
   font-size: 20px;
   font-style: normal;
@@ -13,4 +13,19 @@ header {
   text-align: left;
   color: #fff;
   padding-top: 15px;
+}
+
+h2.title-text {
+  color: #232323;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.journal-image {
+  width: 100%;
+}
+
+.flex-dir-col {
+  display: flex;
+  flex-direction: column;
 }

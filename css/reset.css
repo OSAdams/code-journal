@@ -3,9 +3,9 @@
   font-family:
     "Proza Libre",
     sans-serif;
-  color: #292929;
 }
 
 body {
   margin: 0;
+  height: 100vh;
 }

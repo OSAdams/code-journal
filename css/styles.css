@@ -1,0 +1,15 @@
+header {
+  background-color: #562b81;
+}
+
+.header-text > p {
+  margin: 0;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0;
+  text-align: left;
+  color: #fff;
+  padding: 15px 11px 16px;
+}

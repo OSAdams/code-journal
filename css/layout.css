@@ -18,6 +18,28 @@
   width: 100%;
 }
 
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+label {
+  margin-bottom: 9px;
+}
+
+label:last-child {
+  margin-top: 25px;
+}
+
+label:nth-child(even) {
+  margin-top: 30px;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;

@@ -18,7 +18,7 @@
   width: 100%;
 }
 
-.flex-col {
+.flex {
   display: flex;
   flex-direction: column;
 }
@@ -32,12 +32,20 @@ label {
   margin-bottom: 9px;
 }
 
-label:last-child {
+label.title {
+  margin-top: 24px;
+}
+
+label.image-url {
+  margin-top: 30px;
+}
+
+label.notes {
   margin-top: 25px;
 }
 
-label:nth-child(even) {
-  margin-top: 30px;
+input.submit-entry {
+  margin-top: 22px;
 }
 
 @media screen and (min-width: 768px) {
@@ -52,5 +60,18 @@ label:nth-child(even) {
 
   .column-half {
     width: 50%;
+  }
+
+  .flex {
+    flex-direction: row;
+  }
+
+  .flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label.title {
+    margin-top: 0;
   }
 }

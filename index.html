@@ -31,16 +31,22 @@
       </div>
     </div>
   </header>
-  <main class="container">
-    <div class="row">
-      <div class="column-half">
-        <h2 class="title-text">New Entry</h2>
-        <img class="journal-image" src="./images/placeholder-image-square.jpg" />
+  <div class="container">
+    <main>
+      <div data-view="entry-form">
+        <div class="column-half">
+          <div class="row">
+            <h2 class="title-text">New Entry</h2>
+          </div>
+        </div>
       </div>
-      <div class="column-half">
-        <div data-view="entry-form">
-          <form class="flex-col" id="entry-form">
-            <label for="title">Title</label>
+      <form id="entry-form">
+        <div class="flex row">
+          <div class="column-half">
+            <img class="journal-image" src="./images/placeholder-image-square.jpg" />
+          </div>
+          <div class="column-half flex flex-col">
+            <label class="title" for="title">Title</label>
             <input
               type="text"
               name="title"
@@ -54,7 +60,11 @@
               required
               id="image-url"
               placeholder="https://i.imgur.com/0xQOU5a.jpeg">
-            <label for="notes">Notes</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full flex flex-col">
+            <label class="notes" for="notes">Notes</label>
             <textarea
               rows="7"
               name="notes"
@@ -65,11 +75,11 @@
             <div class="form-actions">
               <input type="submit" class="submit-entry" id="submit-entry" value="SAVE">
             </div>
-          </form>
+          </div>
         </div>
-      </div>
-    </div>
-  </main>
+      </form>
+    </main>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

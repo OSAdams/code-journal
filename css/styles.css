@@ -21,7 +21,6 @@ h2.title-text {
 
 .journal-image {
   width: 100%;
-  height: 245px;
   border-radius: 4px;
   object-fit: cover;
 }
@@ -32,14 +31,6 @@ h2.title-text {
   color: #fff;
   width: 72px;
   height: 32px;
-}
-
-:placeholder {
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 22px;
 }
 
 label {
@@ -55,7 +46,7 @@ textarea {
   height: 40px;
   border-radius: 4px;
   padding: 0.5rem;
-  border: 1px solid #b6b6b6;
+  border: 2px solid #b6b6b6;
 }
 
 textarea {
@@ -65,5 +56,14 @@ textarea {
 input:focus,
 textarea:focus {
   outline: none;
-  border: 1px solid #562b81;
+  border: 2px solid #562b81;
+}
+
+::placeholder,
+:focus {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
 }

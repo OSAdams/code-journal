@@ -48,6 +48,10 @@ input.submit-entry {
   margin-top: 22px;
 }
 
+.journal-image {
+  height: 245px;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
@@ -73,5 +77,9 @@ input.submit-entry {
 
   label.title {
     margin-top: 0;
+  }
+
+  .journal-image {
+    height: 345px;
   }
 }

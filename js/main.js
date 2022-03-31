@@ -2,7 +2,7 @@
 /* exported data */
 
 const $inputForm = document.querySelector('#entry-form');
-const $imageHolder = document.querySelector('.journal-image');
+const $imageHolder = document.querySelector('#journal-image');
 
 $inputForm.addEventListener('input', event => {
   if (event.target.getAttribute('id') === 'image-url') {
@@ -18,6 +18,7 @@ $inputForm.addEventListener('submit', event => {
     notes: event.target[2].value,
     entryId: data.nextEntryId++
   };
-  // eslint-disable-next-line
-  console.log(journalEntry);
+  data.entries.unshift(journalEntry);
+  $imageHolder.setAttribute('src', './images/placeholder-image-square.jpg');
+  $inputForm.reset();
 });

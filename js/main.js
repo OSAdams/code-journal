@@ -44,8 +44,8 @@ function viewEntries() {
   $swapView[0].className = 'swap-view hidden';
   $swapView[1].className = 'swap-view';
   $titleText.textContent = 'Entries';
-  $entryList.innerHTML = '';
   $viewForm.className = 'submit-entry';
+  $entryList.innerHTML = '';
   for (const entryIndex in data.entries) {
     $entryList.appendChild(populateEntries(data.entries[entryIndex]));
   }

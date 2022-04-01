@@ -15,18 +15,71 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Proza+Libre:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
     rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Proza+Libre:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
-    <div class="header-text">
-      <h1>Code Journal</h1>
+  <header class="container">
+    <div class="row">
+      <div class="column-full">
+        <h1 class="header-text">Code Journal</h1>
+      </div>
     </div>
   </header>
-  <main>
-  </main>
+  <div class="container">
+    <main>
+      <div data-view="entry-form">
+        <div class="column-half">
+          <div class="row">
+            <h2 class="title-text">New Entry</h2>
+          </div>
+        </div>
+        <form id="entry-form">
+          <div class="flex row">
+            <div class="column-half">
+              <img class="journal-image" id="journal-image" src="./images/placeholder-image-square.jpg" />
+            </div>
+            <div class="column-half flex flex-col">
+              <label class="title" for="title">Title</label>
+              <input
+                type="text"
+                name="title"
+                required
+                id="entry-title"
+                placeholder="Astronomy">
+              <label class="image-url" for="image-url">Photo URL</label>
+              <input
+                type="text"
+                name="image-url"
+                required
+                id="image-url"
+                placeholder="https://i.imgur.com/0xQOU5a.jpeg">
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full flex flex-col">
+              <label class="notes" for="notes">Notes</label>
+              <textarea
+                rows="7"
+                name="notes"
+                required
+                id="notes"
+                class="note-input"
+                placeholder="Astronomy is truly mindboggling. The idea that we are so insignificant compared the vast size of space humbles ones ideals, opinions, and morals"></textarea>
+              <div class="form-actions">
+                <input type="submit" class="submit-entry" id="submit-entry" value="SAVE">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

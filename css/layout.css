@@ -8,14 +8,43 @@
   padding: 0 1.5rem;
 }
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .column-full,
 .column-half {
   width: 100%;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+label {
+  margin-bottom: 9px;
+}
+
+label.title {
+  margin-top: 24px;
+}
+
+label.image-url {
+  margin-top: 30px;
+}
+
+label.notes {
+  margin-top: 25px;
+}
+
+input.submit-entry {
+  margin-top: 22px;
+}
+
+.journal-image {
+  height: 245px;
 }
 
 @media screen and (min-width: 768px) {
@@ -30,5 +59,22 @@
 
   .column-half {
     width: 50%;
+  }
+
+  .flex {
+    flex-direction: row;
+  }
+
+  .flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label.title {
+    margin-top: 0;
+  }
+
+  .journal-image {
+    height: 345px;
   }
 }

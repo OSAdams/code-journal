@@ -3,17 +3,28 @@ header {
   height: 53px;
 }
 
-h1.header-text {
-  margin: 0;
+div.nav-container {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+div.nav-container > h1 {
   font-size: 20px;
   font-weight: 400;
-  color: #fff;
-  padding-top: 15px;
 }
 
 h2.title-text {
   margin-top: 16px;
   margin-bottom: 16px;
+  font-size: 30px;
+}
+
+a.view-entries {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: semi-bold;
+  padding-left: 18px;
 }
 
 .journal-image {

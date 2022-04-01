@@ -6,14 +6,8 @@ const $imageHolder = document.getElementById('journal-image');
 const $entryList = document.getElementById('entry-list');
 const $swapView = document.querySelectorAll('.swap-view');
 const $viewEntries = document.querySelector('.view-entries');
-const $titleText = document.querySelector('.title-text')
-
-if (data.view === 'entry-form') {
-  $swapView[0].className = 'swap-view'
-  $swapView[1].className += ' hidden'
-} else if (data.view === 'entries') {
-  viewEntries();
-}
+const $titleText = document.querySelector('.title-text');
+const $viewForm = document.querySelector('#new-entry');
 
 $inputForm.addEventListener('input', event => {
   if (event.target.getAttribute('id') === 'image-url') {
@@ -32,20 +26,43 @@ $inputForm.addEventListener('submit', event => {
   data.entries.unshift(journalEntry);
   $imageHolder.setAttribute('src', './images/placeholder-image-square.jpg');
   $inputForm.reset();
-  data.view = 'entries'
   viewEntries();
 });
 
 $viewEntries.addEventListener('click', event => {
-  data.view = 'entries'
+  data.view = 'entries';
+  $viewForm.className = 'submit-entry';
   viewEntries();
-})
+});
+
+$viewForm.addEventListener('click', event => {
+  data.view = 'entry-form';
+  $viewForm.className += ' hidden';
+  viewForm();
+});
 
 function viewEntries() {
-  $swapView[0].className += ' hidden';
+  $swapView[0].className = 'swap-view hidden';
   $swapView[1].className = 'swap-view';
-  $titleText.textContent = 'Entries'
+  $titleText.textContent = 'Entries';
 }
+
+function viewForm() {
+  $swapView[0].className = 'swap-view';
+  $swapView[1].className = 'swap-view hidden';
+}
+
+window.addEventListener('DOMContentLoaded', event => {
+  if (data.view === 'entries') {
+    viewEntries();
+  } else if (data.view === 'entry-form') {
+    $viewForm.className += ' hidden';
+    viewForm();
+  }
+  for (const entryIndex in data.entries) {
+    $entryList.appendChild(populateEntries(data.entries[entryIndex]));
+  }
+});
 
 function populateEntries(entry) {
   const listItem = document.createElement('li');
@@ -84,9 +101,3 @@ function populateEntries(entry) {
 
   return listItem;
 }
-
-window.addEventListener('DOMContentLoaded', event => {
-  for (const entryIndex in data.entries) {
-    $entryList.appendChild(populateEntries(data.entries[entryIndex]));
-  }
-});

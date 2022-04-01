@@ -2,6 +2,10 @@
   display: none !important;
 }
 
+.row {
+  width: 100%;
+}
+
 .container {
   max-width: 575px;
   margin: 0 auto;
@@ -21,6 +25,18 @@
 .form-actions {
   display: flex;
   justify-content: flex-end;
+}
+
+div > div.column-full > div.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+div > div.column-full > div.row > a.submit-entry {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
 }
 
 label {

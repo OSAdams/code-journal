@@ -27,7 +27,8 @@ label {
   margin-bottom: 9px;
 }
 
-label.title {
+label.title,
+.entry-title {
   margin-top: 24px;
 }
 
@@ -70,7 +71,8 @@ input.submit-entry {
     flex-direction: column;
   }
 
-  label.title {
+  label.title,
+  .entry-title {
     margin-top: 0;
   }
 

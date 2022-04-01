@@ -7,7 +7,7 @@ const $entryList = document.getElementById('entry-list');
 const $swapView = document.querySelectorAll('.swap-view');
 const $viewEntries = document.querySelector('.view-entries');
 const $titleText = document.querySelector('.title-text');
-const $viewForm = document.querySelector('#new-entry');
+const $viewForm = document.getElementById('new-entry');
 
 $inputForm.addEventListener('input', event => {
   if (event.target.getAttribute('id') === 'image-url') {
@@ -31,13 +31,12 @@ $inputForm.addEventListener('submit', event => {
 
 $viewEntries.addEventListener('click', event => {
   data.view = 'entries';
-  $viewForm.className = 'submit-entry';
   viewEntries();
 });
 
 $viewForm.addEventListener('click', event => {
   data.view = 'entry-form';
-  $viewForm.className += ' hidden';
+  $viewForm.className = 'submit-entry hidden';
   viewForm();
 });
 
@@ -45,22 +44,28 @@ function viewEntries() {
   $swapView[0].className = 'swap-view hidden';
   $swapView[1].className = 'swap-view';
   $titleText.textContent = 'Entries';
+  $entryList.innerHTML = '';
+  $viewForm.className = 'submit-entry';
+  for (const entryIndex in data.entries) {
+    $entryList.appendChild(populateEntries(data.entries[entryIndex]));
+  }
 }
 
 function viewForm() {
   $swapView[0].className = 'swap-view';
   $swapView[1].className = 'swap-view hidden';
+  $titleText.textContent = 'New Entry';
+  $viewForm.className = 'submit-entry hidden';
 }
 
 window.addEventListener('DOMContentLoaded', event => {
   if (data.view === 'entries') {
+    $titleText.textContent = 'Entries';
     viewEntries();
   } else if (data.view === 'entry-form') {
+    $titleText.textContent = 'New Entry';
     $viewForm.className += ' hidden';
     viewForm();
-  }
-  for (const entryIndex in data.entries) {
-    $entryList.appendChild(populateEntries(data.entries[entryIndex]));
   }
 });
 

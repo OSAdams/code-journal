@@ -96,6 +96,9 @@ ul {
 }
 
 a.submit-entry {
-  text-align: center;
   padding: 0;
+}
+
+#entry-list > li {
+  margin-bottom: 27px;
 }

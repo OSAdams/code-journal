@@ -29,18 +29,12 @@ $inputForm.addEventListener('submit', event => {
   viewEntries();
 });
 
-$viewEntries.addEventListener('click', event => {
-  data.view = 'entries';
-  viewEntries();
-});
+$viewEntries.addEventListener('click', viewEntries);
 
-$viewForm.addEventListener('click', event => {
-  data.view = 'entry-form';
-  $viewForm.className = 'submit-entry hidden';
-  viewForm();
-});
+$viewForm.addEventListener('click', viewForm);
 
 function viewEntries() {
+  data.view = 'entries';
   $swapView[0].className = 'swap-view hidden';
   $swapView[1].className = 'swap-view';
   $titleText.textContent = 'Entries';
@@ -52,6 +46,7 @@ function viewEntries() {
 }
 
 function viewForm() {
+  data.view = 'entry-form';
   $swapView[0].className = 'swap-view';
   $swapView[1].className = 'swap-view hidden';
   $titleText.textContent = 'New Entry';
@@ -60,11 +55,9 @@ function viewForm() {
 
 window.addEventListener('DOMContentLoaded', event => {
   if (data.view === 'entries') {
-    $titleText.textContent = 'Entries';
     viewEntries();
   } else if (data.view === 'entry-form') {
     $titleText.textContent = 'New Entry';
-    $viewForm.className += ' hidden';
     viewForm();
   }
 });

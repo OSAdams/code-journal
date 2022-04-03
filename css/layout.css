@@ -2,6 +2,10 @@
   display: none !important;
 }
 
+.row {
+  width: 100%;
+}
+
 .container {
   max-width: 575px;
   margin: 0 auto;
@@ -23,11 +27,24 @@
   justify-content: flex-end;
 }
 
+div > div.column-full > div.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+div > div.column-full > div.row > a.submit-entry {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
 label {
   margin-bottom: 9px;
 }
 
-label.title {
+label.title,
+.entry-title {
   margin-top: 24px;
 }
 
@@ -70,7 +87,8 @@ input.submit-entry {
     flex-direction: column;
   }
 
-  label.title {
+  label.title,
+  .entry-title {
     margin-top: 0;
   }
 

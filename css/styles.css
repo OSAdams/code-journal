@@ -102,3 +102,7 @@ a.submit-entry {
 #entry-list > li {
   margin-bottom: 27px;
 }
+
+.p-center {
+  text-align: center;
+}

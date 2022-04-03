@@ -63,6 +63,14 @@ window.addEventListener('DOMContentLoaded', event => {
 });
 
 function populateEntries(entry) {
+  if (data.entries === null) {
+    const noEntries = document.createElement('div');
+    noEntries.className = 'p-center';
+    const pNoEntries = document.createElement('p');
+    pNoEntries.textContent = 'No entries have been recorded';
+    noEntries.appendChild(pNoEntries);
+    return noEntries;
+  }
   const listItem = document.createElement('li');
 
   const flexRowDiv = document.createElement('div');

@@ -57,7 +57,6 @@ window.addEventListener('DOMContentLoaded', event => {
   if (data.view === 'entries') {
     viewEntries();
   } else if (data.view === 'entry-form') {
-    $titleText.textContent = 'New Entry';
     viewForm();
   }
 });

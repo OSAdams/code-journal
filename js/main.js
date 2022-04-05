@@ -44,7 +44,6 @@ function viewEntries() {
   $entryList.innerHTML = '';
   for (const entryIndex in data.entries) {
     $entryList.appendChild(populateEntries(data.entries[entryIndex]));
-
   }
 }
 
@@ -56,6 +55,13 @@ function viewForm() {
   $titleText.textContent = 'New Entry';
   $viewForm.className = 'submit-entry hidden';
 }
+
+function editEntry(event) {
+  // eslint-disable-next-line no-console
+  console.log('lel');
+}
+
+editEntry();
 
 window.addEventListener('DOMContentLoaded', event => {
   if (data.view === 'entries') {

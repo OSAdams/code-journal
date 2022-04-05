@@ -8,6 +8,7 @@ const $swapView = document.querySelectorAll('.swap-view');
 const $viewEntries = document.querySelector('.view-entries');
 const $titleText = document.querySelector('.title-text');
 const $viewForm = document.getElementById('new-entry');
+const $dataView = document.getElementById('data-view');
 
 $inputForm.addEventListener('input', event => {
   if (event.target.getAttribute('id') === 'image-url') {
@@ -35,6 +36,7 @@ $viewForm.addEventListener('click', viewForm);
 
 function viewEntries() {
   data.view = 'entries';
+  $dataView.setAttribute('data-view', 'entries');
   $swapView[0].className = 'swap-view hidden';
   $swapView[1].className = 'swap-view';
   $titleText.textContent = 'Entries';
@@ -47,6 +49,7 @@ function viewEntries() {
 
 function viewForm() {
   data.view = 'entry-form';
+  $dataView.setAttribute('data-view', 'entry-form');
   $swapView[0].className = 'swap-view';
   $swapView[1].className = 'swap-view hidden';
   $titleText.textContent = 'New Entry';
@@ -85,19 +88,30 @@ function populateEntries(entry) {
   colHalfDiv.appendChild(journalImage);
   flexRowDiv.appendChild(colHalfDiv);
 
-  const colHalfFlexFlexCol = document.createElement('div');
-  colHalfFlexFlexCol.className = 'column-half flex flex-col';
+  const colHalfFlexColDiv = document.createElement('div');
+  colHalfFlexColDiv.className = 'column-half flex flex-col';
+
+  const flexRowDiv2 = document.createElement('div');
+  flexRowDiv2.className = 'flex row space-between';
 
   const entryTitleSpan = document.createElement('span');
   entryTitleSpan.className = 'entry-title';
 
+  const entryEditSpan = document.createElement('span');
+  const editIcon = document.createElement('i');
+  editIcon.className = 'fas fa-edit';
+
+  entryEditSpan.appendChild(editIcon);
+  flexRowDiv2.appendChild(entryTitleSpan);
+  flexRowDiv2.appendChild(entryEditSpan);
+
   const entryNotesP = document.createElement('p');
   entryNotesP.className = 'entry-note';
 
-  colHalfFlexFlexCol.appendChild(entryTitleSpan);
-  colHalfFlexFlexCol.appendChild(entryNotesP);
+  colHalfFlexColDiv.appendChild(flexRowDiv2);
+  colHalfFlexColDiv.appendChild(entryNotesP);
 
-  flexRowDiv.appendChild(colHalfFlexFlexCol);
+  flexRowDiv.appendChild(colHalfFlexColDiv);
   listItem.appendChild(flexRowDiv);
 
   journalImage.setAttribute('src', entry.photoUrl);

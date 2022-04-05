@@ -44,6 +44,7 @@ function viewEntries() {
   $entryList.innerHTML = '';
   for (const entryIndex in data.entries) {
     $entryList.appendChild(populateEntries(data.entries[entryIndex]));
+
   }
 }
 
@@ -65,7 +66,7 @@ window.addEventListener('DOMContentLoaded', event => {
 });
 
 function populateEntries(entry) {
-  if (data.entries === null) {
+  if (entry.length < 1) {
     const noEntries = document.createElement('div');
     noEntries.className = 'p-center';
     const pNoEntries = document.createElement('p');
@@ -74,6 +75,7 @@ function populateEntries(entry) {
     return noEntries;
   }
   const listItem = document.createElement('li');
+  listItem.setAttribute('data-entry-id', entry.entryId);
 
   const flexRowDiv = document.createElement('div');
   flexRowDiv.className = 'flex row';

@@ -40,11 +40,18 @@ label {
 
 input,
 textarea,
-.entry-note {
+.entry-note,
+.placeholder {
   font-family:
     "Open Sans",
     sans-serif;
   font-size: 16px;
+}
+
+.placeholder {
+  text-decoration: underline;
+  color: red;
+  cursor: pointer;
 }
 
 .entry-title {
@@ -68,8 +75,13 @@ textarea {
   height: 149px;
 }
 
+a.submit-entry {
+  padding: 0;
+}
+
 input:focus,
-textarea:focus {
+textarea:focus,
+a.submit-entry:focus {
   outline: none;
   border: 2px solid #562b81;
 }
@@ -93,10 +105,6 @@ textarea:focus {
 ul {
   padding: 0;
   list-style-type: none;
-}
-
-a.submit-entry {
-  padding: 0;
 }
 
 #entry-list > li {

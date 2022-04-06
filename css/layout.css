@@ -24,7 +24,8 @@
 
 .form-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  padding-top: 22px;
 }
 
 div > div.column-full > div.row,
@@ -55,10 +56,6 @@ label.image-url {
 
 label.notes {
   margin-top: 25px;
-}
-
-input.submit-entry {
-  margin-top: 22px;
 }
 
 .journal-image {

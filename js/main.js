@@ -9,6 +9,7 @@ const $viewEntries = document.querySelector('.view-entries');
 const $titleText = document.querySelector('.title-text');
 const $viewForm = document.getElementById('new-entry');
 const $dataView = document.getElementById('data-view');
+const $deleteEntry = document.getElementById('delete-entry');
 
 $inputForm.addEventListener('input', event => {
   if (event.target.getAttribute('id') === 'image-url') {
@@ -65,6 +66,7 @@ $entryList.addEventListener('click', event => {
   $inputForm[1].value = data.editing.photoUrl;
   $inputForm[2].value = data.editing.notes;
   $imageHolder.setAttribute('src', data.editing.photoUrl);
+  $deleteEntry.textContent = 'Delete Entry';
 });
 
 function viewEntries() {
@@ -87,6 +89,7 @@ function viewForm() {
   $swapView[1].className = 'swap-view hidden';
   $titleText.textContent = 'New Entry';
   $viewForm.className = 'submit-entry hidden';
+  $deleteEntry.textContent = '';
 }
 
 window.addEventListener('DOMContentLoaded', event => {

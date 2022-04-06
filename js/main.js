@@ -34,6 +34,19 @@ $viewEntries.addEventListener('click', viewEntries);
 
 $viewForm.addEventListener('click', viewForm);
 
+$entryList.addEventListener('click', event => {
+  if (event.target.className === 'fas fa-edit') {
+    // eslint-disable-next-line no-console
+    console.log(event.target);
+    data.view = 'entry-form';
+    $dataView.setAttribute('data-view', 'entry-form');
+    $swapView[0].className = 'swap-view';
+    $swapView[1].className = 'swap-view hidden';
+    $titleText.textContent = 'Edit Entry';
+    $viewForm.className = 'submit-entry hidden';
+  }
+});
+
 function viewEntries() {
   data.view = 'entries';
   $dataView.setAttribute('data-view', 'entries');
@@ -55,13 +68,6 @@ function viewForm() {
   $titleText.textContent = 'New Entry';
   $viewForm.className = 'submit-entry hidden';
 }
-
-function editEntry(event) {
-  // eslint-disable-next-line no-console
-  console.log('lel');
-}
-
-editEntry();
 
 window.addEventListener('DOMContentLoaded', event => {
   if (data.view === 'entries') {

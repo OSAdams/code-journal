@@ -30,11 +30,11 @@ $inputForm.addEventListener('submit', event => {
     $inputForm.reset();
     viewEntries();
   } else if (data.editing) {
-    for (const entryIndex in data.entries) {
-      if (data.entries[entryIndex].entryId === data.editing.entryId) {
-        data.entries[entryIndex].title = $inputForm[0].value;
-        data.entries[entryIndex].photoUrl = $inputForm[1].value;
-        data.entries[entryIndex].notes = $inputForm[2].value;
+    for (const entryIndex of data.entries) {
+      if (entryIndex.entryId === data.editing.entryId) {
+        entryIndex.title = $inputForm[0].value;
+        entryIndex.photoUrl = $inputForm[1].value;
+        entryIndex.notes = $inputForm[2].value;
       }
     }
     data.editing = null;
@@ -49,12 +49,15 @@ $viewEntries.addEventListener('click', viewEntries);
 $viewForm.addEventListener('click', viewForm);
 
 $entryList.addEventListener('click', event => {
-  if (event.target.className === 'fas fa-edit entry-edit') {
+  if (event.target.className !== 'fas fa-edit entry-edit') {
+    return;
+  } else if (event.target.className === 'fas fa-edit entry-edit') {
     const dataEntryId = parseInt(event.target.getAttribute('data-entry-id'));
     viewForm();
-    for (const entryIndex in data.entries) {
-      if (data.entries[entryIndex].entryId === dataEntryId) {
-        data.editing = data.entries[entryIndex];
+    $titleText.textContent = 'Edit Entry';
+    for (const entryIndex of data.entries) {
+      if (entryIndex.entryId === dataEntryId) {
+        data.editing = entryIndex;
       }
     }
   }
@@ -72,8 +75,8 @@ function viewEntries() {
   $titleText.textContent = 'Entries';
   $viewForm.className = 'submit-entry';
   $entryList.innerHTML = '';
-  for (const entryIndex in data.entries) {
-    $entryList.appendChild(populateEntries(data.entries[entryIndex]));
+  for (const entryIndex of data.entries) {
+    $entryList.appendChild(populateEntries(entryIndex));
   }
 }
 

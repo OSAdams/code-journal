@@ -106,3 +106,14 @@ a.submit-entry {
 .p-center {
   text-align: center;
 }
+
+i.entry-edit {
+  color: #562b81;
+  font-size: 22px;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+i.entry-edit:active {
+  color: #b6b6b6;
+}

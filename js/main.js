@@ -8,6 +8,7 @@ const $swapView = document.querySelectorAll('.swap-view');
 const $viewEntries = document.querySelector('.view-entries');
 const $titleText = document.querySelector('.title-text');
 const $viewForm = document.getElementById('new-entry');
+const $dataView = document.getElementById('data-view');
 
 $inputForm.addEventListener('input', event => {
   if (event.target.getAttribute('id') === 'image-url') {
@@ -17,36 +18,71 @@ $inputForm.addEventListener('input', event => {
 
 $inputForm.addEventListener('submit', event => {
   event.preventDefault();
-  const journalEntry = {
-    title: event.target[0].value,
-    photoUrl: event.target[1].value,
-    notes: event.target[2].value,
-    entryId: data.nextEntryId++
-  };
-  data.entries.unshift(journalEntry);
-  $imageHolder.setAttribute('src', './images/placeholder-image-square.jpg');
-  $inputForm.reset();
-  viewEntries();
+  if (data.editing === null) {
+    const journalEntry = {
+      title: event.target[0].value,
+      photoUrl: event.target[1].value,
+      notes: event.target[2].value,
+      entryId: data.nextEntryId++
+    };
+    data.entries.unshift(journalEntry);
+    $imageHolder.setAttribute('src', './images/placeholder-image-square.jpg');
+    $inputForm.reset();
+    viewEntries();
+  } else if (data.editing) {
+    for (const entryIndex of data.entries) {
+      if (entryIndex.entryId === data.editing.entryId) {
+        entryIndex.title = $inputForm[0].value;
+        entryIndex.photoUrl = $inputForm[1].value;
+        entryIndex.notes = $inputForm[2].value;
+      }
+    }
+    data.editing = null;
+    $imageHolder.setAttribute('src', './images/placeholder-image-square.jpg');
+    $inputForm.reset();
+    viewEntries();
+  }
 });
 
 $viewEntries.addEventListener('click', viewEntries);
 
 $viewForm.addEventListener('click', viewForm);
 
+$entryList.addEventListener('click', event => {
+  if (event.target.className !== 'fas fa-edit entry-edit') {
+    return;
+  } else if (event.target.className === 'fas fa-edit entry-edit') {
+    const dataEntryId = parseInt(event.target.getAttribute('data-entry-id'));
+    viewForm();
+    $titleText.textContent = 'Edit Entry';
+    for (const entryIndex of data.entries) {
+      if (entryIndex.entryId === dataEntryId) {
+        data.editing = entryIndex;
+      }
+    }
+  }
+  $inputForm[0].value = data.editing.title;
+  $inputForm[1].value = data.editing.photoUrl;
+  $inputForm[2].value = data.editing.notes;
+  $imageHolder.setAttribute('src', data.editing.photoUrl);
+});
+
 function viewEntries() {
   data.view = 'entries';
+  $dataView.setAttribute('data-view', 'entries');
   $swapView[0].className = 'swap-view hidden';
   $swapView[1].className = 'swap-view';
   $titleText.textContent = 'Entries';
   $viewForm.className = 'submit-entry';
   $entryList.innerHTML = '';
-  for (const entryIndex in data.entries) {
-    $entryList.appendChild(populateEntries(data.entries[entryIndex]));
+  for (const entryIndex of data.entries) {
+    $entryList.appendChild(populateEntries(entryIndex));
   }
 }
 
 function viewForm() {
   data.view = 'entry-form';
+  $dataView.setAttribute('data-view', 'entry-form');
   $swapView[0].className = 'swap-view';
   $swapView[1].className = 'swap-view hidden';
   $titleText.textContent = 'New Entry';
@@ -57,13 +93,12 @@ window.addEventListener('DOMContentLoaded', event => {
   if (data.view === 'entries') {
     viewEntries();
   } else if (data.view === 'entry-form') {
-    $titleText.textContent = 'New Entry';
     viewForm();
   }
 });
 
 function populateEntries(entry) {
-  if (data.entries === null) {
+  if (entry.length < 1) {
     const noEntries = document.createElement('div');
     noEntries.className = 'p-center';
     const pNoEntries = document.createElement('p');
@@ -86,19 +121,31 @@ function populateEntries(entry) {
   colHalfDiv.appendChild(journalImage);
   flexRowDiv.appendChild(colHalfDiv);
 
-  const colHalfFlexFlexCol = document.createElement('div');
-  colHalfFlexFlexCol.className = 'column-half flex flex-col';
+  const colHalfFlexColDiv = document.createElement('div');
+  colHalfFlexColDiv.className = 'column-half flex flex-col';
+
+  const flexRowDiv2 = document.createElement('div');
+  flexRowDiv2.className = 'flex row space-between';
 
   const entryTitleSpan = document.createElement('span');
   entryTitleSpan.className = 'entry-title';
 
+  const entryEditSpan = document.createElement('span');
+  const editIcon = document.createElement('i');
+  editIcon.className = 'fas fa-edit entry-edit';
+  editIcon.setAttribute('data-entry-id', entry.entryId);
+
+  entryEditSpan.appendChild(editIcon);
+  flexRowDiv2.appendChild(entryTitleSpan);
+  flexRowDiv2.appendChild(entryEditSpan);
+
   const entryNotesP = document.createElement('p');
   entryNotesP.className = 'entry-note';
 
-  colHalfFlexFlexCol.appendChild(entryTitleSpan);
-  colHalfFlexFlexCol.appendChild(entryNotesP);
+  colHalfFlexColDiv.appendChild(flexRowDiv2);
+  colHalfFlexColDiv.appendChild(entryNotesP);
 
-  flexRowDiv.appendChild(colHalfFlexFlexCol);
+  flexRowDiv.appendChild(colHalfFlexColDiv);
   listItem.appendChild(flexRowDiv);
 
   journalImage.setAttribute('src', entry.photoUrl);

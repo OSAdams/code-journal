@@ -35,15 +35,16 @@ $viewEntries.addEventListener('click', viewEntries);
 $viewForm.addEventListener('click', viewForm);
 
 $entryList.addEventListener('click', event => {
-  if (event.target.className === 'fas fa-edit') {
-    // eslint-disable-next-line no-console
-    console.log(event.target);
-    data.view = 'entry-form';
-    $dataView.setAttribute('data-view', 'entry-form');
-    $swapView[0].className = 'swap-view';
-    $swapView[1].className = 'swap-view hidden';
-    $titleText.textContent = 'Edit Entry';
-    $viewForm.className = 'submit-entry hidden';
+  if (event.target.className === 'fas fa-edit entry-edit') {
+    const dataEntryId = parseInt(event.target.getAttribute('data-entry-id'));
+    viewForm();
+    for (const entryIndex in data.entries) {
+      if (data.entries[entryIndex].entryId === dataEntryId) {
+        data.editing = data.entries[entryIndex];
+        // eslint-disable-next-line no-console
+        console.log(data.editing);
+      }
+    }
   }
 });
 
@@ -87,7 +88,6 @@ function populateEntries(entry) {
     return noEntries;
   }
   const listItem = document.createElement('li');
-  listItem.setAttribute('data-entry-id', entry.entryId);
 
   const flexRowDiv = document.createElement('div');
   flexRowDiv.className = 'flex row';
@@ -113,7 +113,8 @@ function populateEntries(entry) {
 
   const entryEditSpan = document.createElement('span');
   const editIcon = document.createElement('i');
-  editIcon.className = 'fas fa-edit';
+  editIcon.className = 'fas fa-edit entry-edit';
+  editIcon.setAttribute('data-entry-id', entry.entryId);
 
   entryEditSpan.appendChild(editIcon);
   flexRowDiv2.appendChild(entryTitleSpan);

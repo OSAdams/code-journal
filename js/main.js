@@ -18,16 +18,30 @@ $inputForm.addEventListener('input', event => {
 
 $inputForm.addEventListener('submit', event => {
   event.preventDefault();
-  const journalEntry = {
-    title: event.target[0].value,
-    photoUrl: event.target[1].value,
-    notes: event.target[2].value,
-    entryId: data.nextEntryId++
-  };
-  data.entries.unshift(journalEntry);
-  $imageHolder.setAttribute('src', './images/placeholder-image-square.jpg');
-  $inputForm.reset();
-  viewEntries();
+  if (data.editing === null) {
+    const journalEntry = {
+      title: event.target[0].value,
+      photoUrl: event.target[1].value,
+      notes: event.target[2].value,
+      entryId: data.nextEntryId++
+    };
+    data.entries.unshift(journalEntry);
+    $imageHolder.setAttribute('src', './images/placeholder-image-square.jpg');
+    $inputForm.reset();
+    viewEntries();
+  } else if (data.editing) {
+    for (const entryIndex in data.entries) {
+      if (data.entries[entryIndex].entryId === data.editing.entryId) {
+        data.entries[entryIndex].title = $inputForm[0].value;
+        data.entries[entryIndex].photoUrl = $inputForm[1].value;
+        data.entries[entryIndex].notes = $inputForm[2].value;
+      }
+    }
+    data.editing = null;
+    $imageHolder.setAttribute('src', './images/placeholder-image-square.jpg');
+    $inputForm.reset();
+    viewEntries();
+  }
 });
 
 $viewEntries.addEventListener('click', viewEntries);

@@ -41,11 +41,13 @@ $entryList.addEventListener('click', event => {
     for (const entryIndex in data.entries) {
       if (data.entries[entryIndex].entryId === dataEntryId) {
         data.editing = data.entries[entryIndex];
-        // eslint-disable-next-line no-console
-        console.log(data.editing);
       }
     }
   }
+  $inputForm[0].value = data.editing.title;
+  $inputForm[1].value = data.editing.photoUrl;
+  $inputForm[2].value = data.editing.notes;
+  $imageHolder.setAttribute('src', data.editing.photoUrl);
 });
 
 function viewEntries() {

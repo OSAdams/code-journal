@@ -113,6 +113,7 @@ function viewForm() {
   $titleText.textContent = 'New Entry';
   $viewForm.className = 'submit-entry hidden';
   $deleteEntry.textContent = '';
+  $inputForm.reset();
 }
 
 window.addEventListener('DOMContentLoaded', event => {
@@ -152,7 +153,7 @@ function populateEntries(entry) {
   colHalfFlexColDiv.className = 'column-half flex flex-col';
 
   const flexRowDiv2 = document.createElement('div');
-  flexRowDiv2.className = 'flex row space-between';
+  flexRowDiv2.className = 'space-between';
 
   const entryTitleSpan = document.createElement('span');
   entryTitleSpan.className = 'entry-title';

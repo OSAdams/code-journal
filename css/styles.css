@@ -57,12 +57,10 @@ textarea,
   cursor: pointer;
 }
 
-.entry-title, {
-  font-family:
-    "Open Sans",
-    sans-serif;
+span.entry-title {
   font-size: 24px;
   font-weight: 600;
+  padding-top: 0;
 }
 
 input,

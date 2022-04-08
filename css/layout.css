@@ -45,8 +45,7 @@ label {
   margin-bottom: 9px;
 }
 
-label.title,
-.entry-title {
+label.title {
   margin-top: 24px;
 }
 
@@ -86,6 +85,23 @@ label.notes {
   padding-right: 14px;
 }
 
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.entry-title {
+  margin-top: 0;
+}
+
+i.entry-edit {
+  padding-top: 4px;
+}
+
+div.column-half.flex.flex-col {
+  margin-top: 20px;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
@@ -116,5 +132,9 @@ label.notes {
 
   .journal-image {
     height: 345px;
+  }
+
+  div.column-half.flex.flex-col {
+    margin-top: 0;
   }
 }

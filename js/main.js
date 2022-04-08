@@ -10,6 +10,9 @@ const $titleText = document.querySelector('.title-text');
 const $viewForm = document.getElementById('new-entry');
 const $dataView = document.getElementById('data-view');
 const $deleteEntry = document.getElementById('delete-entry');
+const $deleteCancel = document.getElementById('delete-cancel');
+const $deleteConfirm = document.getElementById('delete-confirm');
+const $deleteModal = document.getElementById('delete-modal');
 
 $inputForm.addEventListener('input', event => {
   if (event.target.getAttribute('id') === 'image-url') {
@@ -43,6 +46,26 @@ $inputForm.addEventListener('submit', event => {
     $inputForm.reset();
     viewEntries();
   }
+});
+
+$deleteCancel.addEventListener('click', event => {
+  $deleteModal.className = 'delete-modal hidden';
+});
+
+$deleteConfirm.addEventListener('click', event => {
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === data.editing.entryId) {
+      data.entries.splice(i, 1);
+      data.editing = null;
+      $deleteModal.className = 'delete-modal hidden';
+      viewEntries();
+      return;
+    }
+  }
+});
+
+$deleteEntry.addEventListener('click', event => {
+  $deleteModal.className = 'delete-modal';
 });
 
 $viewEntries.addEventListener('click', viewEntries);
@@ -98,6 +121,7 @@ window.addEventListener('DOMContentLoaded', event => {
   } else if (data.view === 'entry-form') {
     viewForm();
   }
+  $deleteModal.className = 'delete-modal hidden';
 });
 
 function populateEntries(entry) {

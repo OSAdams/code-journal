@@ -62,6 +62,22 @@ label.notes {
   height: 245px;
 }
 
+.delete-modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+}
+
+.delete-modal > .container {
+  margin: auto;
+  width: 319px;
+  height: 131px;
+  justify-content: center;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;

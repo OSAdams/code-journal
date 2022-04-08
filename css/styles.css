@@ -125,3 +125,12 @@ i.entry-edit {
 i.entry-edit:active {
   color: #b6b6b6;
 }
+
+.delete-modal {
+  background-color: rgba(41, 41, 41, 0.75);
+}
+
+.delete-modal > .container {
+  background-color: #fefefe;
+  border-radius: 4px;
+}

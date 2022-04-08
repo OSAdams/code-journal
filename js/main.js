@@ -9,6 +9,10 @@ const $viewEntries = document.querySelector('.view-entries');
 const $titleText = document.querySelector('.title-text');
 const $viewForm = document.getElementById('new-entry');
 const $dataView = document.getElementById('data-view');
+const $deleteEntry = document.getElementById('delete-entry');
+const $deleteCancel = document.getElementById('delete-cancel');
+const $deleteConfirm = document.getElementById('delete-confirm');
+const $deleteModal = document.getElementById('delete-modal');
 
 $inputForm.addEventListener('input', event => {
   if (event.target.getAttribute('id') === 'image-url') {
@@ -44,6 +48,26 @@ $inputForm.addEventListener('submit', event => {
   }
 });
 
+$deleteCancel.addEventListener('click', event => {
+  $deleteModal.className = 'delete-modal hidden';
+});
+
+$deleteConfirm.addEventListener('click', event => {
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === data.editing.entryId) {
+      data.entries.splice(i, 1);
+      data.editing = null;
+      $deleteModal.className = 'delete-modal hidden';
+      viewEntries();
+      return;
+    }
+  }
+});
+
+$deleteEntry.addEventListener('click', event => {
+  $deleteModal.className = 'delete-modal';
+});
+
 $viewEntries.addEventListener('click', viewEntries);
 
 $viewForm.addEventListener('click', viewForm);
@@ -65,6 +89,7 @@ $entryList.addEventListener('click', event => {
   $inputForm[1].value = data.editing.photoUrl;
   $inputForm[2].value = data.editing.notes;
   $imageHolder.setAttribute('src', data.editing.photoUrl);
+  $deleteEntry.textContent = 'Delete Entry';
 });
 
 function viewEntries() {
@@ -87,6 +112,9 @@ function viewForm() {
   $swapView[1].className = 'swap-view hidden';
   $titleText.textContent = 'New Entry';
   $viewForm.className = 'submit-entry hidden';
+  $deleteEntry.textContent = '';
+  $imageHolder.setAttribute('src', './images/placeholder-image-square.jpg');
+  $inputForm.reset();
 }
 
 window.addEventListener('DOMContentLoaded', event => {
@@ -95,6 +123,7 @@ window.addEventListener('DOMContentLoaded', event => {
   } else if (data.view === 'entry-form') {
     viewForm();
   }
+  $deleteModal.className = 'delete-modal hidden';
 });
 
 function populateEntries(entry) {
@@ -125,7 +154,7 @@ function populateEntries(entry) {
   colHalfFlexColDiv.className = 'column-half flex flex-col';
 
   const flexRowDiv2 = document.createElement('div');
-  flexRowDiv2.className = 'flex row space-between';
+  flexRowDiv2.className = 'space-between';
 
   const entryTitleSpan = document.createElement('span');
   entryTitleSpan.className = 'entry-title';

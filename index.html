@@ -77,6 +77,7 @@
                 class="note-input"
                 placeholder="Astronomy is truly mindboggling. The idea that we are so insignificant compared the vast size of space humbles ones ideals, opinions, and morals"></textarea>
             <div class="form-actions">
+              <span class="placeholder" id="delete-entry">Delete Entry</span>
               <input type="submit" class="submit-entry" id="submit-entry" value="SAVE">
             </div>
           </div>
@@ -88,6 +89,19 @@
       </div>
   </div>
   </main>
+  </div>
+  <div class="delete-modal hidden" id="delete-modal">
+    <div class="container">
+      <div class="row">
+        <p class="delete-modal-text">
+          Are you sure you want to delete this entry?
+        </p>
+      </div>
+      <div class="row">
+        <div id="delete-cancel" class="delete-modal-button"><p>CANCEL</p></div>
+        <div id="delete-confirm" class="delete-modal-button"><p>CONFIRM</p></div>
+      </div>
+    </div>
   </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

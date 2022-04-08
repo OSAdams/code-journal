@@ -40,19 +40,27 @@ label {
 
 input,
 textarea,
-.entry-note {
+.entry-note,
+.placeholder,
+.delete-modal-text,
+.delete-modal-button,
+.delete-modal-button > p {
   font-family:
     "Open Sans",
     sans-serif;
   font-size: 16px;
 }
 
-.entry-title {
-  font-family:
-    "Open Sans",
-    sans-serif;
+.placeholder {
+  text-decoration: underline;
+  color: red;
+  cursor: pointer;
+}
+
+span.entry-title {
   font-size: 24px;
   font-weight: 600;
+  padding-top: 0;
 }
 
 input,
@@ -68,8 +76,13 @@ textarea {
   height: 149px;
 }
 
+a.submit-entry {
+  padding: 0;
+}
+
 input:focus,
-textarea:focus {
+textarea:focus,
+a.submit-entry:focus {
   outline: none;
   border: 2px solid #562b81;
 }
@@ -95,10 +108,6 @@ ul {
   list-style-type: none;
 }
 
-a.submit-entry {
-  padding: 0;
-}
-
 #entry-list > li {
   margin-bottom: 27px;
 }
@@ -116,4 +125,44 @@ i.entry-edit {
 
 i.entry-edit:active {
   color: #b6b6b6;
+}
+
+.delete-modal {
+  background-color: rgba(41, 41, 41, 0.75);
+}
+
+.delete-modal > .container {
+  background-color: #fefefe;
+  border-radius: 4px;
+  padding: 0;
+  padding-top: 1rem;
+}
+
+.delete-modal-text,
+.delete-modal-button {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.delete-modal-button {
+  height: 32px;
+  width: 84px;
+  background-color: rgba(182, 182, 182, 1);
+  font-size: 16px;
+  color: rgba(41, 41, 41, 1);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-modal-button:last-child {
+  background-color: rgba(220, 38, 38, 1);
+  width: 92px;
+  color: #fefefe;
+}
+
+.delete-modal-button > p {
+  margin: 0;
+  margin-top: 6px;
+  font-weight: 600;
 }

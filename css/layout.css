@@ -24,7 +24,8 @@
 
 .form-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  padding-top: 22px;
 }
 
 div > div.column-full > div.row,
@@ -44,8 +45,7 @@ label {
   margin-bottom: 9px;
 }
 
-label.title,
-.entry-title {
+label.title {
   margin-top: 24px;
 }
 
@@ -57,12 +57,49 @@ label.notes {
   margin-top: 25px;
 }
 
-input.submit-entry {
-  margin-top: 22px;
-}
-
 .journal-image {
   height: 245px;
+}
+
+.delete-modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+}
+
+.delete-modal > .container {
+  margin: auto;
+  width: 319px;
+  height: 131px;
+  justify-content: center;
+}
+
+.delete-modal > .container > .row:last-child {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 37px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.entry-title {
+  margin-top: 0;
+}
+
+i.entry-edit {
+  padding-top: 4px;
+}
+
+div.column-half.flex.flex-col {
+  margin-top: 20px;
 }
 
 @media screen and (min-width: 768px) {
@@ -95,5 +132,9 @@ input.submit-entry {
 
   .journal-image {
     height: 345px;
+  }
+
+  div.column-half.flex.flex-col {
+    margin-top: 0;
   }
 }

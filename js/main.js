@@ -113,6 +113,7 @@ function viewForm() {
   $titleText.textContent = 'New Entry';
   $viewForm.className = 'submit-entry hidden';
   $deleteEntry.textContent = '';
+  $imageHolder.setAttribute('src', './images/placeholder-image-square.jpg');
   $inputForm.reset();
 }
 

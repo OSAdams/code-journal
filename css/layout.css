@@ -78,6 +78,14 @@ label.notes {
   justify-content: center;
 }
 
+.delete-modal > .container > .row:last-child {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 37px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;

@@ -41,7 +41,10 @@ label {
 input,
 textarea,
 .entry-note,
-.placeholder {
+.placeholder,
+.delete-modal-text,
+.delete-modal-button,
+.delete-modal-button > p {
   font-family:
     "Open Sans",
     sans-serif;
@@ -54,7 +57,7 @@ textarea,
   cursor: pointer;
 }
 
-.entry-title {
+.entry-title, {
   font-family:
     "Open Sans",
     sans-serif;
@@ -133,4 +136,35 @@ i.entry-edit:active {
 .delete-modal > .container {
   background-color: #fefefe;
   border-radius: 4px;
+  padding: 0;
+  padding-top: 1rem;
+}
+
+.delete-modal-text,
+.delete-modal-button {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.delete-modal-button {
+  height: 32px;
+  width: 84px;
+  background-color: rgba(182, 182, 182, 1);
+  font-size: 16px;
+  color: rgba(41, 41, 41, 1);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-modal-button:last-child {
+  background-color: rgba(220, 38, 38, 1);
+  width: 92px;
+  color: #fefefe;
+}
+
+.delete-modal-button > p {
+  margin: 0;
+  margin-top: 6px;
+  font-weight: 600;
 }

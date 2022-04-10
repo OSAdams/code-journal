@@ -8,6 +8,7 @@ A dynamic HTML, CSS, and JavaScript journal application that allows users to cre
 - CSS3
 - JavaScript (ES6)
 - JSON
+- Browser Local Storage
 
 ## Preview
 
@@ -15,7 +16,7 @@ A dynamic HTML, CSS, and JavaScript journal application that allows users to cre
 
 ## Live Demo
 
-https://osadams.github.io/get-motivated-else-laugh 
+ https://osadams.github.io/code-journal/
 
 ## Current Features
 

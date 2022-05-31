@@ -20,10 +20,10 @@ A dynamic HTML, CSS, and JavaScript journal application that allows users to cre
 
 ## Current Features
 
-- Users can view a home screen that allows them to generate Motivational Quotes or Dad Jokes
-- Users can view Motivational Quotes or Dad Jokes and save their favorite Quote or Joke
-- Users can view all favorited Motivational Quotes
-- Users can view all favorited Dad Jokes
+- Users can submit a journal entry
+- Users can view their journal entries
+- Users can edit a journal entry
+- Users can delete a journal entry
 
 ## Future Features
 
